@@ -8,6 +8,7 @@ import Home from '../Home';
 import About from '../About';
 import NotFound from '../NotFound';
 import Legal from '../Legal';
+import Down from '../Down';
 
 import Footer from '../../containers/Footer';
 import Drawer from '../../containers/Drawer';
@@ -111,7 +112,7 @@ const App = ({
         {isUpdate && <UserUpdate />}
         {isFav && <Favorites />}
         <Advertise />
-        <Switch>
+        {/* <Switch>
           <Route path="/" exact>
             <Home isDetails={isDetails} isSuggestion={isSuggestion} />
             <Drawer />
@@ -129,7 +130,8 @@ const App = ({
           <Route path="*">
             <NotFound />
           </Route>
-        </Switch>
+        </Switch> */}
+        <Down />
       </div>
       <Footer />
     </div>
