@@ -9,6 +9,7 @@
   color: var(--pokemon);
   border-radius: 15px;
   box-shadow: 0 0 5px var(--background);
+  white-space: pre-wrap;
 
   &-style {
     background-color: var(--scaled);

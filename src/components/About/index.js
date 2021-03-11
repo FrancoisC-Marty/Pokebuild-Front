@@ -17,10 +17,11 @@ const About = () => (
     </div>
     <a
       className="api-link"
-      href="https://pokebuildapi.fr"
-      target="blank"
+      href="http://ec2-54-209-63-59.compute-1.amazonaws.com/api/v1"
+      target="_blank"
+      rel="noreferrer noopener"
     >
-      Lien vers notre api custom
+      {'Lien vers notre api custom\n(Ouvre un nouvel onglet)'}
     </a>
     <div className="techno">
       <h2 className="techno-title">Liste des technos utilisées</h2>

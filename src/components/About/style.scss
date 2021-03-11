@@ -54,10 +54,12 @@
 
 .api-link {
     color: var(--scaled);
+    text-align: center;
     background-color: var(--background);
     border-radius: 5px;
     padding: (vars.$gutter / 2);
     margin-bottom: vars.$gutter 0;
+    white-space: pre-wrap;
 
     @media (min-width: 1400px) {
         padding: vars.$gutter;
