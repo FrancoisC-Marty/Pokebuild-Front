@@ -56,9 +56,10 @@ export const memorizeTypes = (types) => ({
 });
 
 export const ADD_SELECTED_POKEMON = 'ADD_SELECTED_POKEMON';
-export const addSelectedPokemon = (id) => ({
+export const addSelectedPokemon = (id, ability) => ({
   type: ADD_SELECTED_POKEMON,
   id,
+  ability,
 });
 
 export const REMOVE_SELECTED_POKEMON = 'REMOVE_SELECTED_POKEMON';

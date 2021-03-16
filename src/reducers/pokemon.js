@@ -83,7 +83,9 @@ const reducer = (state = initialState, action = {}) => {
         pokemonSelected: [...state.pokemonSelected, state.pokemonList.find((pokemon) => (
           pokemon.id === action.id
         ))],
-        pokemonSelectedIds: [...state.pokemonSelectedIds, action.id],
+        pokemonSelectedIds: [...state.pokemonSelectedIds, {
+          [action.id]: [action.ability],
+        }],
       };
     case REMOVE_SELECTED_POKEMON: {
       if (state.pokemonSelected.length <= 0) {
