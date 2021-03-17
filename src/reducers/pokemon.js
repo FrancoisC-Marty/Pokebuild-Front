@@ -114,12 +114,18 @@ const reducer = (state = initialState, action = {}) => {
         pokemonSelectedIds: [],
         pokemonSelectedObject: [],
       };
-    case ANALYZE_TEAM:
+    case ANALYZE_TEAM: {
+      const newArrayObject = [];
+      action.ids.forEach((id) => {
+        newArrayObject.push({ [id]: '' });
+      });
       return {
         ...state,
         pokemonSelected: [...action.team],
         pokemonSelectedIds: [...action.ids],
+        pokemonSelectedObject: [...newArrayObject],
       };
+    }
     case MEMORIZE_RANDOM_TEAM_IDS: {
       const newArrayObject = [];
       action.ids.forEach((id) => {

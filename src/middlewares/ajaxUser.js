@@ -207,7 +207,6 @@ const ajaxUser = (store) => (next) => (action) => {
         username: pseudo,
       })
         .then((response) => {
-          console.log(response);
           store.dispatch(memorizeTeams(response.data.apiTeams));
         })
         .catch((error) => {

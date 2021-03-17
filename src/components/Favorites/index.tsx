@@ -57,9 +57,9 @@ const Favorites = ({
         <h1 className="favorites-content-title">Mes équipes sauvegardées</h1>
         <div className="favorites-user">
           {teams.map((team) => (
-            <div className="favorites-content-team">
+            <div key={team.name} className="favorites-content-team">
               <div className="favorites-content-team-infos">
-                <p key={team.name} className="favorites-content-team-title">{team.name}</p>
+                <p className="favorites-content-team-title">{team.name}</p>
                 <div className="favories-content-team-infos-buttons">
                   <button
                     type="button"
