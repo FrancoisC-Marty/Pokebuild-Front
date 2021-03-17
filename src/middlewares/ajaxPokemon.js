@@ -9,7 +9,6 @@ import {
   memorizeTypes,
   SEND_TEAM,
   GENERATE_TEAM,
-  memorizeRandomTeam,
   memorizeRandomTeamIds,
   SUGGEST_POKEMON,
   memorizeSuggest,
@@ -20,7 +19,7 @@ import {
 } from '../actions/teamResistances';
 
 const ajaxPokemon = (store) => (next) => (action) => {
-  axios.defaults.baseURL = 'https://pokebuildapi.fr/api/v1/';
+  axios.defaults.baseURL = 'http://ec2-54-209-63-59.compute-1.amazonaws.com/api/v1/';
   switch (action.type) {
     case GET_POKEMON:
       axios.get('pokemon')
@@ -43,7 +42,7 @@ const ajaxPokemon = (store) => (next) => (action) => {
     case SEND_TEAM: {
       const { team } = action;
       const jsoned = JSON.stringify(team);
-      axios.post('team/defensive-coverage', jsoned)
+      axios.post('team/defensive-coverage/v2', jsoned)
         .then((response) => {
           response.data.map((currentData) => (
             store.dispatch(memorizeResitances(currentData, currentData.name))
@@ -58,8 +57,7 @@ const ajaxPokemon = (store) => (next) => (action) => {
       axios.get('random/team')
         .then((response) => {
           const randomIds = response.data.map((each) => (each.id));
-          store.dispatch(memorizeRandomTeam(response.data));
-          store.dispatch(memorizeRandomTeamIds(randomIds));
+          store.dispatch(memorizeRandomTeamIds(randomIds, response.data));
         })
         .catch((error) => {
           console.error(error);
@@ -70,10 +68,8 @@ const ajaxPokemon = (store) => (next) => (action) => {
         pokemonSelectedIds,
       } = store.getState().pokemon;
       const jsoned = JSON.stringify(pokemonSelectedIds);
-      console.log(jsoned);
       axios.post('team/suggestion', jsoned)
         .then((response) => {
-          console.log(response);
           store.dispatch(memorizeSuggest(response.data));
         })
         .catch((error) => {

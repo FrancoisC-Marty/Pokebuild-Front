@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -27,6 +27,7 @@ const Pokestat = ({
       image: string,
     }>,
     apiGeneration: number,
+    resistanceModifyingAbilitiesForApi: Array<string>,
   },
  addPokemon: Function,
  toggleSuggestion: Function,
@@ -41,19 +42,36 @@ const Pokestat = ({
     apiTypes,
   } = pokemon;
   const [isAnimation, setIsAnimation] = useState(false);
+  const [isAbilities, setIsAbilities] = useState(false);
   const handleClose = (): void => {
     setIsAnimation(true);
     setTimeout(() => {
       toggleDetails();
     }, 250);
   };
-  const handleAdd = (): void => {
+  const handleAdd = (evt: any): void => {
+    evt.preventDefault();
     handleClose();
     if (isSuggestion) {
       toggleSuggestion();
     }
-    setTimeout(() => addPokemon(id), 150);
+    setTimeout(() => addPokemon(id, evt.target[0].value), 150);
   };
+
+  const abilities = [];
+
+  const abilitiesApi = pokemon.resistanceModifyingAbilitiesForApi;
+
+  useEffect(() => {
+    if (abilitiesApi.length !== 0) {
+      setIsAbilities(true);
+    }
+  }, []);
+
+  if (isAbilities) {
+    abilities.push(abilitiesApi);
+  }
+
   return (
     <div className={classNames('pokestat', { 'pokestat--animation': isAnimation })}>
       <div className={classNames('pokestat-container', { 'pokestat-container--drawer': isDrawer })}>
@@ -74,12 +92,23 @@ const Pokestat = ({
           <img className="pokestat-image" src={image} alt={`${name}.png`} />
         </section>
         <section className="pokestat-infos">
-          <div
-            className="pokestat-infos-addButton"
-            onClick={handleAdd}
-          >
-            Ajouter à votre équipe
-          </div>
+          <form onSubmit={handleAdd}>
+            {isAbilities && (
+              <select className="pokestat-abilities">
+                <option value="">Comp Spé</option>
+                {abilities.map((ability) => (
+                  <option key={ability.name} value={ability.slug}>{ability.name}</option>
+                ))}
+              </select>
+            )}
+            <button
+              type="submit"
+              className={classNames('pokestat-infos-addButton', { 'pokestat-infos-addButton--abilities': isAbilities })}
+              // onClick={handleAdd}
+            >
+              Ajouter à votre équipe
+            </button>
+          </form>
           <div className="pokestat-details">
             {
             Object.entries(stats).map(([statName, statValue]: [string, number]) => {

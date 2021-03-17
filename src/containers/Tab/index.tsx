@@ -8,6 +8,7 @@ import { Pokemon } from '../../type';
 const mapStateToProp = (state: any) => ({
   types: state.pokemon.types,
   pokemonSelected: state.pokemon.pokemonSelected,
+  pokemonSelectedObject: state.pokemon.pokemonSelectedObject,
   teamResistances: state.resistances,
   isDarkMode: state.boolean.isDarkMode,
   state,

@@ -14,4 +14,8 @@ export interface Pokemon {
     damage_relation: string,
     damage_multiplier: number
   },
+  apiResistancesWithAbilities: {
+    damage_relation: string,
+    damage_multiplier: number
+  },
 }

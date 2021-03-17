@@ -22,8 +22,8 @@ const Suggestion = ({
           <div
             className="suggestion-content-pokemon-div"
             onClick={() => {
-              addSelectedPokemon(poke.id);
-              toggleSuggestion();
+              addSelectedPokemon(poke.id, '');
+              setTimeout(() => toggleSuggestion(), 100);
             }}
           >
             <img className="suggestion-content-pokemon-image" src={poke.sprite} alt={poke.name} />

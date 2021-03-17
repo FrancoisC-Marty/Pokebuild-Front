@@ -20,6 +20,7 @@ const Tab = (
   {
     types,
     pokemonSelected,
+    pokemonSelectedObject,
     teamResistances,
     isDarkMode,
     pokemonDetails,
@@ -31,6 +32,9 @@ const Tab = (
       image: string,
    }>,
    pokemonSelected: Array<Pokemon>,
+   pokemonSelectedObject: Array<{
+    id: string,
+  }>,
    teamResistances: Resistances,
    isDarkMode: boolean,
    pokemonDetails: Function,
@@ -45,6 +49,22 @@ const Tab = (
   else {
     corner = cornerLight;
   }
+
+  const abilities: Array<{
+    damage_relation: string,
+    damage_multiplier: number,
+  }> = [];
+
+  // console.log(pokemonSelectedObject);
+
+  pokemonSelected.forEach((pokemon, index) => {
+    if (pokemonSelectedObject[index][pokemon.id] !== '') {
+      abilities.push(pokemon.apiResistancesWithAbilities);
+    }
+    else {
+      abilities.push(pokemon.apiResistances);
+    }
+  });
 
   return (
     <div className="tab-container">
@@ -82,8 +102,15 @@ const Tab = (
           </tr>
           {types.map((currentType: {name: string, image: string}, index: number) => (
             <tr key={randomKey(1000000, 2000000)}>
-              {pokemonSelected.map((pokemon: Pokemon) => (
-                <TrRows key={randomKey(1000000, 3000000)} pokemon={pokemon} index={index} />
+              {abilities.map((ability: {
+                damage_relation: string,
+                damage_multiplier: number,
+              }) => (
+                <TrRows
+                  key={randomKey(1000000, 3000000)}
+                  ability={ability}
+                  index={index}
+                />
               ))}
               <TrScore
                 key={randomKey(1000000, 3000000)}
@@ -109,6 +136,7 @@ Tab.propTypes = {
       damage_relation: PropTypes.string.isRequired,
     })).isRequired,
   })).isRequired,
+  pokemonSelectedObject: PropTypes.array.isRequired,
   teamResistances: PropTypes.object.isRequired,
   isDarkmode: PropTypes.bool.isRequired,
   pokemonDetails: PropTypes.func.isRequired,

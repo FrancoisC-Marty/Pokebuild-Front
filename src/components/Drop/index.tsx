@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -11,7 +11,7 @@ const Drop = (
   {
     pokemonSelected,
     clearPokemons,
-    pokemonIds,
+    pokemonObject,
     sendTeam,
     toggleInputFav,
     isInputFav,
@@ -26,7 +26,7 @@ const Drop = (
     pokemonSelected: Array<Pokemon>,
     clearPokemons: Function,
     sendTeam: Function,
-    pokemonIds: Array<number>,
+    pokemonObject: Array<Object>,
     saveTeam: Function,
     toggleInputFav: Function,
     isInputFav: Boolean,
@@ -46,9 +46,9 @@ const Drop = (
     />);
   }
 
-  if (pokemonIds.length > 0 && pokemonIds.length <= 6) {
+  if (pokemonObject.length > 0 && pokemonObject.length <= 6) {
     useEffect(() => {
-      sendTeam(pokemonIds);
+      sendTeam(pokemonObject);
     });
   }
 
@@ -194,7 +194,7 @@ Drop.propTypes = {
   pokemonSelected: PropTypes.arrayOf(PropTypes.object).isRequired,
   clearPokemons: PropTypes.func.isRequired,
   sendTeam: PropTypes.func.isRequired,
-  pokemonIds: PropTypes.array.isRequired,
+  pokemonObject: PropTypes.array.isRequired,
   saveTeam: PropTypes.func.isRequired,
   toggleInputFav: PropTypes.func.isRequired,
   isInputFav: PropTypes.bool.isRequired,

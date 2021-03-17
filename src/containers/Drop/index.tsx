@@ -14,7 +14,7 @@ import { toggleInputFav, toggleSuggestion } from '../../actions/boolean';
 
 const mapStateToProps = (state: any) => ({
   pokemonSelected: state.pokemon.pokemonSelected,
-  pokemonIds: state.pokemon.pokemonSelectedIds,
+  pokemonObject: state.pokemon.pokemonSelectedObject,
   isInputFav: state.boolean.isInputFav,
   isLogged: state.boolean.isLogged,
   nameTeam: state.favorites.name,

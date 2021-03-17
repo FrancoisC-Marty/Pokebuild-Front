@@ -3,7 +3,7 @@ import Generation from '../../components/Generation';
 
 import { setGenValue } from '../../actions/pokemon';
 
-const mapStateToProps = (state: any) => null;
+const mapStateToProps = (state: any) => ({});
 
 const mapDispatchToProps = (dispatch: Function) => ({
   setGenValue: (value: number) => {

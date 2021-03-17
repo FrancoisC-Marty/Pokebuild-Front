@@ -56,9 +56,10 @@ export const memorizeTypes = (types) => ({
 });
 
 export const ADD_SELECTED_POKEMON = 'ADD_SELECTED_POKEMON';
-export const addSelectedPokemon = (id) => ({
+export const addSelectedPokemon = (id, ability) => ({
   type: ADD_SELECTED_POKEMON,
   id,
+  ability,
 });
 
 export const REMOVE_SELECTED_POKEMON = 'REMOVE_SELECTED_POKEMON';
@@ -89,16 +90,11 @@ export const generateTeam = () => ({
   type: GENERATE_TEAM,
 });
 
-export const MEMORIZE_RANDOM_TEAM = 'MEMORIZE_RANDOM_TEAM';
-export const memorizeRandomTeam = (team) => ({
-  type: MEMORIZE_RANDOM_TEAM,
-  team,
-});
-
 export const MEMORIZE_RANDOM_TEAM_IDS = 'MEMORIZE_RANDOM_TEAM_IDS';
-export const memorizeRandomTeamIds = (ids) => ({
+export const memorizeRandomTeamIds = (ids, team) => ({
   type: MEMORIZE_RANDOM_TEAM_IDS,
   ids,
+  team,
 });
 
 export const SUGGEST_POKEMON = 'SUGGEST_POKEMON';

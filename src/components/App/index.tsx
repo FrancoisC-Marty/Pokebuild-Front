@@ -117,9 +117,6 @@ const App = ({
             <Drawer />
             {isDetails && <Pokestat />}
           </Route>
-          <Route path="/test" exact>
-            <Pokestat />
-          </Route>
           <Route path="/about" exact>
             <About />
           </Route>

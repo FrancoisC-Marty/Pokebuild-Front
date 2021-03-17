@@ -18,6 +18,43 @@
         animation: fadeOut 0.5s 1;
     }
 
+    &-abilities {
+        position: absolute;
+        top: -.1rem;
+        left: .7rem;
+        border: 0;
+        font-size: 0.6rem;
+        background-color: var(--scaled);
+        border-radius: 5px;
+        padding: (vars.$gutter / 9);
+
+        @media (min-width: 375px) {
+            top: -1.8rem;
+            left: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            font-size: 0.8rem;
+        }
+
+        @media (min-width: 1000px) {
+            font-size: 1rem;
+            padding: (vars.$gutter / 4);
+            top: -1.9rem;
+            left: 1.5rem;
+        }
+
+        @media (min-width: 1400px) {
+            top: -2.2rem;
+            left: 10rem;
+        }
+
+        @media (min-width: 2000px) {
+            top: -2.3rem;
+            left: 23rem;
+        }
+    }
+
     &-container {
         color: var(--scaled);
         display: flex;
@@ -155,8 +192,11 @@
         position: relative;
 
         &-addButton {
+            border: 0;
             position: absolute;
             padding: 0.4rem;
+            font-size: 0.6rem;
+            color: var(--scaled);
             background-color: var(--stat);
             border-radius: 10px;
             cursor: pointer;
@@ -179,13 +219,42 @@
                 }
 
                 @media (min-width: 768px) {
-                    top: -2rem;
-                    left: 3rem;
+                    font-size: 0.8rem;
+                }
+
+                @media (min-width: 1000px) {
+                    font-size: 1rem;
                 }
 
                 @media (min-width: 1400px) {
                     top: -2.3rem;
                     left: 15rem;
+                }
+
+                @media (min-width: 2000px) {
+                    top: -2.3rem;
+                    left: 23rem;
+                }
+            }
+
+            &--abilities {
+                @media (min-width: 375px) {
+                    top: -2rem;
+                    left: 8rem;
+                }
+
+                @media (min-width: 768px) {
+                    font-size: 0.8rem;
+                }
+
+                @media (min-width: 1000px) {
+                    font-size: 1rem;
+                    left: 10rem;
+                }
+
+                @media (min-width: 1400px) {
+                    top: -2.3rem;
+                    left: 20rem;
                 }
 
                 @media (min-width: 2000px) {
