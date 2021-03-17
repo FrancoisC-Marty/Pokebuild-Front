@@ -72,8 +72,6 @@ const Pokestat = ({
     abilities.push(abilitiesApi);
   }
 
-  // console.log(abilities);
-
   return (
     <div className={classNames('pokestat', { 'pokestat--animation': isAnimation })}>
       <div className={classNames('pokestat-container', { 'pokestat-container--drawer': isDrawer })}>

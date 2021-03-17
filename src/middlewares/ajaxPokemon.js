@@ -42,7 +42,6 @@ const ajaxPokemon = (store) => (next) => (action) => {
       break;
     case SEND_TEAM: {
       const { team } = action;
-      console.log(team);
       const jsoned = JSON.stringify(team);
       axios.post('team/defensive-coverage/v2', jsoned)
         .then((response) => {
@@ -59,8 +58,8 @@ const ajaxPokemon = (store) => (next) => (action) => {
       axios.get('random/team')
         .then((response) => {
           const randomIds = response.data.map((each) => (each.id));
-          store.dispatch(memorizeRandomTeam(response.data));
-          store.dispatch(memorizeRandomTeamIds(randomIds));
+          // store.dispatch(memorizeRandomTeam(response.data));
+          store.dispatch(memorizeRandomTeamIds(randomIds, response.data));
         })
         .catch((error) => {
           console.error(error);

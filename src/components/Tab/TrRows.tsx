@@ -1,26 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Pokemon } from '../../type/index';
-
 const TrRows = (
   {
-    pokemon,
+    ability,
     index,
   }: {
-    pokemon: Pokemon,
+    ability: {
+      damage_relation: string,
+      damage_multiplier: number,
+    },
     index: number,
   },
 ) => (
   <td
-    className={`tab-head--def tab-head--def_${pokemon.apiResistances[index].damage_relation}`}
+    className={`tab-head--def tab-head--def_${ability[index].damage_relation}`}
   >
-    {pokemon.apiResistances[index].damage_multiplier}
+    {ability[index].damage_multiplier}
   </td>
 );
 
 TrRows.propTypes = {
-  pokemon: PropTypes.object.isRequired,
+  ability: PropTypes.array.isRequired,
   index: PropTypes.number.isRequired,
 };
 
