@@ -9,7 +9,6 @@ import {
   memorizeTypes,
   SEND_TEAM,
   GENERATE_TEAM,
-  memorizeRandomTeam,
   memorizeRandomTeamIds,
   SUGGEST_POKEMON,
   memorizeSuggest,
@@ -58,7 +57,6 @@ const ajaxPokemon = (store) => (next) => (action) => {
       axios.get('random/team')
         .then((response) => {
           const randomIds = response.data.map((each) => (each.id));
-          // store.dispatch(memorizeRandomTeam(response.data));
           store.dispatch(memorizeRandomTeamIds(randomIds, response.data));
         })
         .catch((error) => {

@@ -13,8 +13,8 @@ const mapDispatchToProps = (dispatch) => ({
   toggleSuggestion: () => {
     dispatch(toggleSuggestion());
   },
-  addSelectedPokemon: (id) => {
-    dispatch(addSelectedPokemon(id));
+  addSelectedPokemon: (id, ability) => {
+    dispatch(addSelectedPokemon(id, ability));
   },
 });
 
