@@ -44,6 +44,28 @@ const Favorites = ({
     }, 250);
   };
 
+  let jsx;
+
+  if (teams.length < 1) {
+    return (
+      <div className={classNames('favorites', { 'favorites_drawer-open': isDrawer }, { 'favorites--animation': isAnimation })}>
+        <div className="favorites-content">
+          <button
+            type="button"
+            className="favorites-content-close"
+            onClick={handleClose}
+          >
+            X
+          </button>
+          <h1 className="favorites-content-title">Mes équipes sauvegardées</h1>
+          <div className="favorites-user">
+            <p className="favorites-user__empty">Vous n'avez aucune équipe sauvegardée</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={classNames('favorites', { 'favorites_drawer-open': isDrawer }, { 'favorites--animation': isAnimation })}>
       <div className="favorites-content">
