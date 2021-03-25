@@ -12,7 +12,7 @@ const pokemonFilterByName = (
   pokemons: Array<Pokemon>,
   input: string,
 ): Array<Pokemon> => {
-  const filtered = pokemons.filter((pokemon) => {
+  const filtered: Array<Pokemon> = pokemons.filter((pokemon: Pokemon): boolean => {
     const testedName = pokemon.slug.toLowerCase();
     const trimedInput = input.trim();
     return testedName.includes(slugifyText(trimedInput));
@@ -35,7 +35,7 @@ const pokemonFilterByGen = (
     filtered = pokemons;
   }
   else {
-    filtered = pokemons.filter((pokemon) => {
+    filtered = pokemons.filter((pokemon: Pokemon): boolean => {
       return pokemon.apiGeneration === value;
     });
   }
@@ -56,7 +56,7 @@ const pokemonFilter = (
   input: string,
   genValue: number,
 ): Array<Pokemon> => {
-  let filtered = pokemons;
+  let filtered: Array<Pokemon> = pokemons;
   if (type.length !== 0) {
     filtered = pokemons.filter((pokemon: Pokemon): boolean => {
       return pokemon.apiTypes.some((currentApiType) => (
